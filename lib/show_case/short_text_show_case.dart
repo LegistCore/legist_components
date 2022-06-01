@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:legist_components/components/short_text_component.dart';
 
-class ShowCase extends StatefulWidget {
-  const ShowCase({Key? key}) : super(key: key);
+class ShortTextComponentShowCase extends StatefulWidget {
+  const ShortTextComponentShowCase({Key? key}) : super(key: key);
 
   @override
-  State<ShowCase> createState() => _ShowCaseState();
+  State<ShortTextComponentShowCase> createState() =>
+      _ShortTextComponentShowCaseState();
 }
 
-class _ShowCaseState extends State<ShowCase> {
+class _ShortTextComponentShowCaseState
+    extends State<ShortTextComponentShowCase> {
   late Size screenSize;
   bool switchValue = true;
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController responseController = TextEditingController();
 
   setWidgetInitializationMode() {
     if (switchValue) {
@@ -20,12 +23,14 @@ class _ShowCaseState extends State<ShowCase> {
         onPressed: () {},
         titleController: titleController,
         descriptionController: descriptionController,
+        responseController: responseController,
       );
     } else {
       return ShortTextComponent.clientMode(
         onPressed: () {},
         title: titleController.text,
         description: descriptionController.text,
+        response: responseController.text,
       );
     }
   }

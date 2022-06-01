@@ -4,28 +4,36 @@ class ShortTextComponent extends StatefulWidget {
   final VoidCallback? onPressed;
   final String? title;
   final String? description;
+  final String? response;
+
   final bool isEditMode;
+
   final TextEditingController? titleController;
   final TextEditingController? descriptionController;
+  final TextEditingController? responseController;
 
   const ShortTextComponent.editMode({
     required this.onPressed,
     required this.titleController,
     required this.descriptionController,
+    required this.responseController,
     Key? key,
   })  : title = null,
         description = null,
         isEditMode = true,
+        response = null,
         super(key: key);
 
   const ShortTextComponent.clientMode({
     required this.onPressed,
     required this.title,
     required this.description,
+    required this.response,
     Key? key,
   })  : titleController = null,
         descriptionController = null,
         isEditMode = false,
+        responseController = null,
         super(key: key);
 
   @override
@@ -140,7 +148,7 @@ class _ShortTextComponentState extends State<ShortTextComponent> {
                 ),
               ),
               TextFormField(
-                controller: TextEditingController(),
+                controller: widget.responseController,
                 style: const TextStyle(
                   fontSize: 25,
                   color: Color.fromARGB(255, 24, 71, 169),
