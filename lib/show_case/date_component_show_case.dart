@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/date_component.dart';
-import '../widgets/switch_button.dart';
+import '../widgets/switch_button_widget.dart';
 import 'generic_component_show_case.dart';
 
 class DateComponentShowCase extends StatefulWidget {
@@ -41,7 +41,7 @@ class _DateComponentShowCaseState extends State<DateComponentShowCase> {
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      floatingActionButton: SwitchButton(
+      floatingActionButton: SwitchButtonWidget(
         editMode: editMode,
         onChanged: (bool value) {
           setState(() {
@@ -52,7 +52,7 @@ class _DateComponentShowCaseState extends State<DateComponentShowCase> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: GenericComponentShowCase(
         getWidgetInitializationMode: getWidgetInitializationMode,
-        switchButton: SwitchButton(
+        switchButton: SwitchButtonWidget(
           editMode: editMode,
           onChanged: (bool value) {
             setState(() {

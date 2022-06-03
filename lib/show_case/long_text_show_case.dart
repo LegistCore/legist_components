@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/long_text_components.dart';
-import '../widgets/switch_button.dart';
+import '../widgets/switch_button_widget.dart';
 import 'generic_component_show_case.dart';
 
 class LongTextComponentShowCase extends StatefulWidget {
@@ -40,7 +40,7 @@ class _LongTextComponentShowCaseState extends State<LongTextComponentShowCase> {
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      floatingActionButton: SwitchButton(
+      floatingActionButton: SwitchButtonWidget(
         editMode: editMode,
         onChanged: (bool value) {
           setState(() {
@@ -51,7 +51,7 @@ class _LongTextComponentShowCaseState extends State<LongTextComponentShowCase> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: GenericComponentShowCase(
         getWidgetInitializationMode: getWidgetInitializationMode,
-        switchButton: SwitchButton(
+        switchButton: SwitchButtonWidget(
           editMode: editMode,
           onChanged: (bool value) {
             setState(() {

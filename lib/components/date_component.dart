@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../widgets/component_confirmation_button.dart';
-import '../widgets/component_description_text_form_field.dart';
-import '../widgets/component_title_text_form_field.dart';
+import '../widgets/component_confirmation_button_widget.dart';
+import '../widgets/component_description_text_form_widget.dart';
+import '../widgets/component_title_text_form_field_widget.dart';
 
 class DateComponent extends StatefulWidget {
   final String? title;
@@ -108,13 +108,13 @@ class _DateComponentState extends State<DateComponent> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              ComponentTitleTextFormField(
+              ComponentTitleTextFormFieldWidget(
                 isEditMode: widget.isEditMode,
                 titleController: widget.titleController,
                 focusNodeQuestion: focusNodeQuestion,
                 colorFocusQuestion: colorFocusQuestion,
               ),
-              ComponentDescriptionTextFormField(
+              ComponentDescriptionTextFormFieldWidget(
                 isEditMode: widget.isEditMode,
                 descriptionController: widget.descriptionController,
                 focusNodeDescription: focusNodeDescription,
@@ -298,7 +298,7 @@ class _DateComponentState extends State<DateComponent> {
                   ? const SizedBox(
                       height: 37,
                     )
-                  : ComponentConfirmationButton(
+                  : ComponentConfirmationButtonWidget(
                       textComponent: 'OK',
                       onPressed: () {},
                       showHint: false,
