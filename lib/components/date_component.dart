@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../widgets/component_confirmation_button.dart';
+import '../widgets/component_description_text_form_field.dart';
+import '../widgets/component_title_text_form_field.dart';
+
 class DateComponent extends StatefulWidget {
   final String? title;
   final String? description;
@@ -104,50 +108,17 @@ class _DateComponentState extends State<DateComponent> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 15),
-                height: 23,
-                child: TextFormField(
-                  enabled: widget.isEditMode,
-                  readOnly: !widget.isEditMode,
-                  style: const TextStyle(
-                    fontSize: 20,
-                  ),
-                  controller: widget.titleController,
-                  focusNode: focusNodeQuestion,
-                  cursorColor: const Color.fromARGB(255, 193, 193, 193),
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: widget.isEditMode
-                        ? 'Your question here. Recall information with @'
-                        : '...',
-                    hintStyle: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      fontStyle: FontStyle.italic,
-                      color: colorFocusQuestion,
-                    ),
-                  ),
-                ),
+              ComponentTitleTextFormField(
+                isEditMode: widget.isEditMode,
+                titleController: widget.titleController,
+                focusNodeQuestion: focusNodeQuestion,
+                colorFocusQuestion: colorFocusQuestion,
               ),
-              TextFormField(
-                controller: widget.descriptionController,
-                enabled: widget.isEditMode,
-                style: const TextStyle(
-                  fontSize: 17,
-                  color: Color.fromARGB(232, 75, 75, 75),
-                ),
-                focusNode: focusNodeDescription,
-                cursorColor: const Color.fromARGB(255, 193, 193, 193),
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: widget.isEditMode ? 'Description (optional)' : '',
-                  hintStyle: TextStyle(
-                    fontSize: 17,
-                    fontStyle: FontStyle.italic,
-                    color: colorFocusDescription,
-                  ),
-                ),
+              ComponentDescriptionTextFormField(
+                isEditMode: widget.isEditMode,
+                descriptionController: widget.descriptionController,
+                focusNodeDescription: focusNodeDescription,
+                colorFocusDescription: colorFocusDescription,
               ),
               const SizedBox(
                 height: 16,
@@ -323,6 +294,15 @@ class _DateComponentState extends State<DateComponent> {
               const SizedBox(
                 height: 15,
               ),
+              widget.isEditMode
+                  ? const SizedBox(
+                      height: 37,
+                    )
+                  : ComponentConfirmationButton(
+                      textComponent: 'OK',
+                      onPressed: () {},
+                      showHint: false,
+                    ),
             ],
           ),
         )

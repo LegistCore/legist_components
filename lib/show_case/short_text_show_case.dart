@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:legist_components/components/short_text_component.dart';
-import 'package:legist_components/show_case/generic_component_show_case.dart';
-import 'package:legist_components/widgets/switch_button.dart';
+
+import '../components/short_text_component.dart';
+import '../widgets/switch_button.dart';
+import 'generic_component_show_case.dart';
 
 class ShortTextComponentShowCase extends StatefulWidget {
   const ShortTextComponentShowCase({Key? key}) : super(key: key);
@@ -40,7 +41,18 @@ class _ShortTextComponentShowCaseState
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
     return Scaffold(
-        floatingActionButton: SwitchButton(
+      floatingActionButton: SwitchButton(
+        editMode: editMode,
+        onChanged: (bool value) {
+          setState(() {
+            editMode = value;
+          });
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      body: GenericComponentShowCase(
+        getWidgetInitializationMode: getWidgetInitializationMode,
+        switchButton: SwitchButton(
           editMode: editMode,
           onChanged: (bool value) {
             setState(() {
@@ -48,15 +60,7 @@ class _ShortTextComponentShowCaseState
             });
           },
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        body: GenericComponentShowCase(
-            getWidgetInitializationMode: getWidgetInitializationMode,
-            switchButton: SwitchButton(
-                editMode: editMode,
-                onChanged: (bool value) {
-                  setState(() {
-                    editMode = value;
-                  });
-                })));
+      ),
+    );
   }
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:legist_components/components/date_component.dart';
-import 'package:legist_components/show_case/generic_component_show_case.dart';
-import 'package:legist_components/widgets/switch_button.dart';
+
+import '../components/date_component.dart';
+import '../widgets/switch_button.dart';
+import 'generic_component_show_case.dart';
 
 class DateComponentShowCase extends StatefulWidget {
   const DateComponentShowCase({Key? key}) : super(key: key);
@@ -40,7 +41,18 @@ class _DateComponentShowCaseState extends State<DateComponentShowCase> {
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
     return Scaffold(
-        floatingActionButton: SwitchButton(
+      floatingActionButton: SwitchButton(
+        editMode: editMode,
+        onChanged: (bool value) {
+          setState(() {
+            editMode = value;
+          });
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      body: GenericComponentShowCase(
+        getWidgetInitializationMode: getWidgetInitializationMode,
+        switchButton: SwitchButton(
           editMode: editMode,
           onChanged: (bool value) {
             setState(() {
@@ -48,15 +60,7 @@ class _DateComponentShowCaseState extends State<DateComponentShowCase> {
             });
           },
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        body: GenericComponentShowCase(
-            getWidgetInitializationMode: getWidgetInitializationMode,
-            switchButton: SwitchButton(
-                editMode: editMode,
-                onChanged: (bool value) {
-                  setState(() {
-                    editMode = value;
-                  });
-                })));
+      ),
+    );
   }
 }
