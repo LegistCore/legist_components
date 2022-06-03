@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:legist_components/components/short_text_component.dart';
+import 'package:legist_components/components/date_component.dart';
 import 'package:legist_components/show_case/generic_component_show_case.dart';
 import 'package:legist_components/widgets/switch_button.dart';
 
-class ShortTextComponentShowCase extends StatefulWidget {
-  const ShortTextComponentShowCase({Key? key}) : super(key: key);
+class DateComponentShowCase extends StatefulWidget {
+  const DateComponentShowCase({Key? key}) : super(key: key);
 
   @override
-  State<ShortTextComponentShowCase> createState() =>
-      _ShortTextComponentShowCaseState();
+  State<DateComponentShowCase> createState() => _DateComponentShowCaseState();
 }
 
-class _ShortTextComponentShowCaseState
-    extends State<ShortTextComponentShowCase> {
+class _DateComponentShowCaseState extends State<DateComponentShowCase> {
   late Size screenSize;
   late bool editMode = true;
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-  final TextEditingController responseController = TextEditingController();
+  final TextEditingController dayController = TextEditingController();
+  final TextEditingController monthController = TextEditingController();
+  final TextEditingController yearController = TextEditingController();
 
-  ShortTextComponent getWidgetInitializationMode() {
+  DateComponent getWidgetInitializationMode() {
     if (editMode) {
-      return ShortTextComponent.editMode(
-        onPressed: () {},
+      return DateComponent.editMode(
         titleController: titleController,
         descriptionController: descriptionController,
-        responseController: responseController,
+        dayController: dayController,
+        monthController: monthController,
+        yearController: yearController,
       );
     } else {
-      return ShortTextComponent.clientMode(
-        onPressed: () {},
+      return DateComponent.clientMode(
         title: titleController.text,
         description: descriptionController.text,
       );

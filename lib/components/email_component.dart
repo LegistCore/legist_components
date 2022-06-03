@@ -68,7 +68,7 @@ class _EmailComponentState extends State<EmailComponent> {
     });
   }
 
-  Color setBorderColorTextFormField() {
+  Color getBorderColorTextFormField() {
     return widget.isEditMode
         ? const Color.fromARGB(232, 192, 209, 247)
         : const Color.fromARGB(255, 24, 71, 169);
@@ -153,12 +153,12 @@ class _EmailComponentState extends State<EmailComponent> {
                   fontSize: 25,
                   color: Color.fromARGB(255, 24, 71, 169),
                 ),
-                cursorColor: setBorderColorTextFormField(),
+                cursorColor: getBorderColorTextFormField(),
                 readOnly: widget.isEditMode,
                 decoration: InputDecoration(
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
-                      color: setBorderColorTextFormField(),
+                      color: getBorderColorTextFormField(),
                     ),
                   ),
                   enabledBorder: const UnderlineInputBorder(

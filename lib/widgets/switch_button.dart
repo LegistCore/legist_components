@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class SwitchButton extends StatefulWidget {
   final ValueChanged<bool>? onChanged;
   final bool editMode;
+
   const SwitchButton({
     required this.editMode,
     required this.onChanged,
