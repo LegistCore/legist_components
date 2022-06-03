@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ComponentDescriptionTextFormField extends StatefulWidget {
+class ComponentDescriptionTextFormFieldWidget extends StatefulWidget {
   final bool isEditMode;
   final TextEditingController? descriptionController;
   final FocusNode? focusNodeDescription;
   final Color colorFocusDescription;
 
-  const ComponentDescriptionTextFormField({
+  const ComponentDescriptionTextFormFieldWidget({
     required this.isEditMode,
     required this.descriptionController,
     required this.focusNodeDescription,
@@ -15,12 +15,12 @@ class ComponentDescriptionTextFormField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ComponentDescriptionTextFormField> createState() =>
-      _ComponentDescriptionTextFormFieldState();
+  State<ComponentDescriptionTextFormFieldWidget> createState() =>
+      _ComponentDescriptionTextFormFieldWidgetState();
 }
 
-class _ComponentDescriptionTextFormFieldState
-    extends State<ComponentDescriptionTextFormField> {
+class _ComponentDescriptionTextFormFieldWidgetState
+    extends State<ComponentDescriptionTextFormFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(

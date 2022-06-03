@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ComponentTitleTextFormField extends StatefulWidget {
+class ComponentTitleTextFormFieldWidget extends StatefulWidget {
   final bool isEditMode;
   final TextEditingController? titleController;
   final FocusNode? focusNodeQuestion;
   final Color colorFocusQuestion;
-  const ComponentTitleTextFormField({
+  const ComponentTitleTextFormFieldWidget({
     required this.isEditMode,
     required this.titleController,
     required this.focusNodeQuestion,
@@ -14,12 +14,12 @@ class ComponentTitleTextFormField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ComponentTitleTextFormField> createState() =>
-      _ComponentTitleTextFormFieldState();
+  State<ComponentTitleTextFormFieldWidget> createState() =>
+      _ComponentTitleTextFormFieldWidgetState();
 }
 
-class _ComponentTitleTextFormFieldState
-    extends State<ComponentTitleTextFormField> {
+class _ComponentTitleTextFormFieldWidgetState
+    extends State<ComponentTitleTextFormFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(

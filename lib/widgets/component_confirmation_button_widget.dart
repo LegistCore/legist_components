@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ComponentConfirmationButton extends StatefulWidget {
+class ComponentConfirmationButtonWidget extends StatefulWidget {
   final VoidCallback? onPressed;
   final String textComponent;
 
   final bool showHint;
 
-  const ComponentConfirmationButton({
+  const ComponentConfirmationButtonWidget({
     required this.textComponent,
     required this.onPressed,
     required this.showHint,
@@ -14,12 +14,12 @@ class ComponentConfirmationButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ComponentConfirmationButton> createState() =>
-      _ComponentConfirmationButtonState();
+  State<ComponentConfirmationButtonWidget> createState() =>
+      _ComponentConfirmationButtonWidgetState();
 }
 
-class _ComponentConfirmationButtonState
-    extends State<ComponentConfirmationButton> {
+class _ComponentConfirmationButtonWidgetState
+    extends State<ComponentConfirmationButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(

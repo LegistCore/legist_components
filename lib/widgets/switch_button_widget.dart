@@ -2,21 +2,21 @@
 
 import 'package:flutter/material.dart';
 
-class SwitchButton extends StatefulWidget {
+class SwitchButtonWidget extends StatefulWidget {
   final ValueChanged<bool>? onChanged;
   final bool editMode;
 
-  const SwitchButton({
+  const SwitchButtonWidget({
     required this.editMode,
     required this.onChanged,
     Key? key,
   }) : super(key: key);
 
   @override
-  State<SwitchButton> createState() => _SwitchButtonState();
+  State<SwitchButtonWidget> createState() => _SwitchButtonWidgetState();
 }
 
-class _SwitchButtonState extends State<SwitchButton> {
+class _SwitchButtonWidgetState extends State<SwitchButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Switch(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ShowCasePresentationButton extends StatefulWidget {
+class ShowCasePresentationButtonWidget extends StatefulWidget {
   final String textComponent;
   final Icon iconComponent;
   final VoidCallback? onPressed;
 
-  const ShowCasePresentationButton({
+  const ShowCasePresentationButtonWidget({
     required this.iconComponent,
     required this.textComponent,
     required this.onPressed,
@@ -13,12 +13,12 @@ class ShowCasePresentationButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ShowCasePresentationButton> createState() =>
-      _ShowCasePresentationButtonState();
+  State<ShowCasePresentationButtonWidget> createState() =>
+      _ShowCasePresentationButtonWidgetState();
 }
 
-class _ShowCasePresentationButtonState
-    extends State<ShowCasePresentationButton> {
+class _ShowCasePresentationButtonWidgetState
+    extends State<ShowCasePresentationButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
