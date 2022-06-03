@@ -4,7 +4,6 @@ class ShortTextComponent extends StatefulWidget {
   final VoidCallback? onPressed;
   final String? title;
   final String? description;
-  final String? response;
 
   final bool isEditMode;
 
@@ -21,14 +20,12 @@ class ShortTextComponent extends StatefulWidget {
   })  : title = null,
         description = null,
         isEditMode = true,
-        response = null,
         super(key: key);
 
   const ShortTextComponent.clientMode({
     required this.onPressed,
     required this.title,
     required this.description,
-    required this.response,
     Key? key,
   })  : titleController = null,
         descriptionController = null,
@@ -68,7 +65,7 @@ class _ShortTextComponentState extends State<ShortTextComponent> {
     });
   }
 
-  Color setBorderColorTextFormField() {
+  Color getBorderColorTextFormField() {
     return widget.isEditMode
         ? const Color.fromARGB(232, 192, 209, 247)
         : const Color.fromARGB(255, 24, 71, 169);
@@ -153,12 +150,12 @@ class _ShortTextComponentState extends State<ShortTextComponent> {
                   fontSize: 25,
                   color: Color.fromARGB(255, 24, 71, 169),
                 ),
-                cursorColor: setBorderColorTextFormField(),
+                cursorColor: getBorderColorTextFormField(),
                 readOnly: widget.isEditMode,
                 decoration: InputDecoration(
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
-                      color: setBorderColorTextFormField(),
+                      color: getBorderColorTextFormField(),
                     ),
                   ),
                   enabledBorder: const UnderlineInputBorder(
