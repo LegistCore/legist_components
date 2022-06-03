@@ -2,33 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:legist_components/show_case/generic_component_show_case.dart';
 import 'package:legist_components/widgets/switch_button.dart';
 
-import '../components/long_text_components.dart';
+import '../components/phone_number_component.dart';
 
-class LongTextComponentShowCase extends StatefulWidget {
-  const LongTextComponentShowCase({Key? key}) : super(key: key);
+class PhoneNumberComponentShowCase extends StatefulWidget {
+  const PhoneNumberComponentShowCase({Key? key}) : super(key: key);
 
   @override
-  State<LongTextComponentShowCase> createState() =>
-      _LongTextComponentShowCaseState();
+  State<PhoneNumberComponentShowCase> createState() =>
+      _PhoneNumberComponentShowCaseState();
 }
 
-class _LongTextComponentShowCaseState extends State<LongTextComponentShowCase> {
+class _PhoneNumberComponentShowCaseState
+    extends State<PhoneNumberComponentShowCase> {
   late Size screenSize;
   late bool editMode = true;
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController responseController = TextEditingController();
 
-  LongTextComponent getWidgetInitializationMode() {
+  PhoneNumberComponent getWidgetInitializationMode() {
     if (editMode) {
-      return LongTextComponent.editMode(
+      return PhoneNumberComponent.editMode(
         onPressed: () {},
         titleController: titleController,
         descriptionController: descriptionController,
         responseController: responseController,
       );
     } else {
-      return LongTextComponent.clientMode(
+      return PhoneNumberComponent.clientMode(
         onPressed: () {},
         title: titleController.text,
         description: descriptionController.text,
