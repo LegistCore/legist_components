@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'show_case/show_case.dart';
+import 'package:legist_components/show_case/showcase_options.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ShowCase(),
+      home: const ShowCaseOptions(),
     );
   }
 }

@@ -57,6 +57,7 @@ class _DateComponentState extends State<DateComponent> {
     focusNodeQuestion = FocusNode();
     focusNodeDescription = FocusNode();
 
+    //todo: Mover para dentro do widget de questão
     focusNodeQuestion.addListener(() {
       setState(() {
         colorFocusQuestion = focusNodeQuestion.hasFocus
@@ -65,6 +66,7 @@ class _DateComponentState extends State<DateComponent> {
       });
     });
 
+    //todo: Mover para dentro do widget de descrição
     focusNodeDescription.addListener(() {
       setState(() {
         colorFocusDescription = focusNodeDescription.hasFocus
