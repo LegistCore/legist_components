@@ -1,14 +1,21 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:legist_components/utils/alphabet_utils.dart';
 
 class ComponentChoiceWidget extends StatefulWidget {
   late bool isEditMode;
   final int index;
+  Icon? iconeParam;
 
+  late int? currentIndex;
   final VoidCallback? onPressed;
+  final VoidCallback? pressToRemove;
 
   ComponentChoiceWidget({
+    required this.currentIndex,
     required this.onPressed,
+    required this.pressToRemove,
     required this.index,
     required this.isEditMode,
     Key? key,
@@ -26,20 +33,7 @@ class _ComponentChoiceWidgetState extends State<ComponentChoiceWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        if (!widget.isEditMode) {
-          setState(() {
-            icone == null
-                ? icone = const Icon(
-                    Icons.check,
-                    color: Color.fromRGBO(24, 71, 169, 1),
-                  )
-                : icone = null;
-          });
-        } else {
-          icone = null;
-        }
-      },
+      onTap: widget.onPressed,
       child: Stack(
         children: [
           const SizedBox(
@@ -48,7 +42,6 @@ class _ComponentChoiceWidgetState extends State<ComponentChoiceWidget> {
           ),
           MouseRegion(
             onHover: (event) {
-              debugPrint('atualizamdp aqui${widget.index}');
               if (widget.isEditMode) {
                 setState(() {
                   eye = true;
@@ -108,7 +101,10 @@ class _ComponentChoiceWidgetState extends State<ComponentChoiceWidget> {
                       child: TextField(
                         enabled: eye,
                         decoration: InputDecoration(
-                          suffixIcon: icone,
+                          suffixIcon: widget.currentIndex == widget.index
+                              ? const Icon(Icons.check,
+                                  color: Color.fromRGBO(24, 71, 169, 1))
+                              : null,
                           border: InputBorder.none,
                           hintText: 'choice',
                           hintStyle: const TextStyle(
@@ -134,7 +130,7 @@ class _ComponentChoiceWidgetState extends State<ComponentChoiceWidget> {
               visible: widget.isEditMode ? eye : false,
               child: MouseRegion(
                 onHover: (event) {
-                  debugPrint('atualizamdp aqui${widget.isEditMode}');
+                  // debugPrint('atualizamdp aqui${widget.isEditMode}');
                   if (widget.isEditMode) {
                     setState(() {
                       eye = true;
@@ -142,7 +138,7 @@ class _ComponentChoiceWidgetState extends State<ComponentChoiceWidget> {
                   }
                 },
                 onExit: (event) {
-                  debugPrint('atualizamdp aqui${widget.isEditMode}');
+                  // debugPrint('atualizamdp aqui${widget.isEditMode}');
                   if (widget.isEditMode) {
                     setState(() {
                       eye = false;
@@ -156,7 +152,7 @@ class _ComponentChoiceWidgetState extends State<ComponentChoiceWidget> {
                     backgroundColor: Colors.grey.shade900,
                     child: const Text("X"),
                     elevation: 5.0,
-                    onPressed: widget.onPressed,
+                    onPressed: widget.pressToRemove,
                   ),
                 ),
               ),

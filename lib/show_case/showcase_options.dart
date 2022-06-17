@@ -5,6 +5,7 @@ import '../widgets/show_case_presentation_button_widget.dart';
 import 'date_component_show_case.dart';
 import 'email_component_show_case.dart';
 import 'long_text_show_case.dart';
+import 'multiple_choice_component_show_case.dart';
 import 'phone_number_component_show_case.dart';
 import 'short_text_show_case.dart';
 
@@ -101,21 +102,21 @@ class ShowCaseOptions extends StatelessWidget {
                       );
                     },
                     iconComponent: const Icon(Icons.chat_outlined),
+                    textComponent: 'Single Choice',
+                  ),
+                  ShowCasePresentationButtonWidget(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const MultipleChoiceComponentShowCase(),
+                        ),
+                      );
+                    },
+                    iconComponent: const Icon(Icons.chat_outlined),
                     textComponent: 'Multiple Choice',
                   ),
-                  // ShowCasePresentationButtonWidget(
-                  //   onPressed: () {
-                  //     Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //         builder: (context) =>
-                  //             const MultipleChoiceComponentShowCase(),
-                  //       ),
-                  //     );
-                  //   },
-                  //   iconComponent: const Icon(Icons.chat_outlined),
-                  //   textComponent: 'Multiple Choice',
-                  // ),
                 ],
               )),
         ));

@@ -40,10 +40,12 @@ class _SingleChoiceComponentState extends State<SingleChoiceComponent> {
   late FocusNode focusNodeQuestion, focusNodeDescription;
   late AlphabetUtils alphabetUtils;
   List<ComponentChoiceWidget> listChoice = [];
+
   Color colorFocusQuestion = const Color.fromARGB(255, 77, 77, 77);
   Color colorFocusDescription = const Color.fromARGB(232, 130, 130, 130);
 
   int alphabetAuxiliaryIndex = 0;
+  int? currentIndex;
 
   @override
   void initState() {
@@ -70,23 +72,25 @@ class _SingleChoiceComponentState extends State<SingleChoiceComponent> {
     });
   }
 
-  List<Widget> refect() {
+  Icon? checkIcon;
+  List<Widget> changeComponentMode() {
     int tam = listChoice.length;
     setState(
       () {
         listChoice = [];
         for (int i = 0; i < tam; i++) {
           if (widget.isEditMode) {
-            debugPrint('refect $i');
             listChoice.add(ComponentChoiceWidget(
               isEditMode: true,
               index: i,
-              onPressed: () {
-                debugPrint(
-                    'removeu indice length ${listChoice.length - 1} ou i $i');
-                setState(() {
-                  listChoice.removeAt(i);
-                });
+              onPressed: null,
+              currentIndex: null,
+              pressToRemove: () {
+                setState(
+                  () {
+                    listChoice.removeAt(i);
+                  },
+                );
               },
             ));
           } else {
@@ -95,14 +99,14 @@ class _SingleChoiceComponentState extends State<SingleChoiceComponent> {
                 isEditMode: false,
                 index: i,
                 onPressed: () {
-                  debugPrint(
-                      'removeu indice length ${listChoice.length - 1} ou i $i');
-                  setState(
-                    () {
-                      listChoice.removeAt(i);
-                    },
-                  );
+                  setState(() {
+                    if (!widget.isEditMode) {
+                      currentIndex = i;
+                    }
+                  });
                 },
+                currentIndex: currentIndex,
+                pressToRemove: null,
               ),
             );
           }
@@ -114,19 +118,14 @@ class _SingleChoiceComponentState extends State<SingleChoiceComponent> {
   }
 
   void addChoice() async {
-    debugPrint('add choice');
-    if (listChoice.length < 52) {
+    if (listChoice.length < 26) {
       setState(() {
         listChoice.add(ComponentChoiceWidget(
           isEditMode: widget.isEditMode,
           index: listChoice.length,
-          onPressed: () {
-            setState(() {
-              listChoice.removeAt(
-                listChoice.length,
-              );
-            });
-          },
+          onPressed: null,
+          currentIndex: currentIndex,
+          pressToRemove: null,
         ));
       });
     }
@@ -179,7 +178,9 @@ class _SingleChoiceComponentState extends State<SingleChoiceComponent> {
                 Row(
                   children: [
                     Column(
-                      children: widget.isEditMode ? refect() : refect(),
+                      children: widget.isEditMode
+                          ? changeComponentMode()
+                          : changeComponentMode(),
                     ),
                   ],
                 ),

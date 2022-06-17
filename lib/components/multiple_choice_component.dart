@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:legist_components/widgets/component_choice_widget.dart';
+import 'package:legist_components/widgets/component_multiple_choice_widget.dart';
 
 import '../utils/alphabet_utils.dart';
 import '../widgets/component_description_text_form_widget.dart';
@@ -40,7 +40,7 @@ class MultipleChoiceComponent extends StatefulWidget {
 class _MultipleChoiceComponentState extends State<MultipleChoiceComponent> {
   late FocusNode focusNodeQuestion, focusNodeDescription;
   late AlphabetUtils alphabetUtils;
-  List<ComponentChoiceWidget> listChoice = [];
+  List<ComponentMultipleChoiceWidget> listChoice = [];
   Color colorFocusQuestion = const Color.fromARGB(255, 77, 77, 77);
   Color colorFocusDescription = const Color.fromARGB(232, 130, 130, 130);
 
@@ -77,29 +77,20 @@ class _MultipleChoiceComponentState extends State<MultipleChoiceComponent> {
       listChoice = [];
       for (int i = 0; i < tam; i++) {
         if (widget.isEditMode) {
-          debugPrint('refect $i');
-          listChoice.add(ComponentChoiceWidget(
+          listChoice.add(ComponentMultipleChoiceWidget(
             isEditMode: true,
             index: i,
             onPressed: () {
-              debugPrint(
-                  'removeu indice length ${listChoice.length - 1} ou i $i');
               setState(() {
                 listChoice.removeAt(i);
               });
             },
           ));
         } else {
-          listChoice.add(ComponentChoiceWidget(
+          listChoice.add(ComponentMultipleChoiceWidget(
             isEditMode: false,
             index: i,
-            onPressed: () {
-              debugPrint(
-                  'removeu indice length ${listChoice.length - 1} ou i $i');
-              setState(() {
-                listChoice.removeAt(i);
-              });
-            },
+            onPressed: null,
           ));
         }
       }
@@ -110,18 +101,12 @@ class _MultipleChoiceComponentState extends State<MultipleChoiceComponent> {
 
   void addChoice() async {
     debugPrint('add choice');
-    if (listChoice.length < 52) {
+    if (listChoice.length < 26) {
       setState(() {
-        listChoice.add(ComponentChoiceWidget(
+        listChoice.add(ComponentMultipleChoiceWidget(
           isEditMode: widget.isEditMode,
           index: listChoice.length,
-          onPressed: () {
-            setState(() {
-              listChoice.removeAt(
-                listChoice.length,
-              );
-            });
-          },
+          onPressed: null,
         ));
       });
     }
