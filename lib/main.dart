@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:legist_components/show_case/showcase_options.dart';
+import 'package:legist_components/show_case/second_sprint.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ShowCaseOptions(),
+      // home: const ShowCaseOptions(),
+      home: const SecondSprint(),
     );
   }
 }
