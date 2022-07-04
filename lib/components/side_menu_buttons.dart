@@ -1,9 +1,13 @@
+import 'dart:math';
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/tile_button_widget.dart';
 
 class SideMenuButtons extends StatefulWidget {
   final VoidCallback? onPressedAdd;
+
   const SideMenuButtons({
     required this.onPressedAdd,
     Key? key,
@@ -19,18 +23,16 @@ class _SideMenuButtonsState extends State<SideMenuButtons> {
   Color? backgroundColor;
   Color? backgroundColorSetting;
   Color? backgroundColortrash;
-  double initialHeigth = 135;
-  int i = 1;
+
   List<Widget> items = [];
 
   addOption() {
-    i++;
     setState(() {
-      initialHeigth += 60;
       final int index = items.length;
       items.add(TileButtonWidget(
-        key: Key('$index'),
+        key: Key(index.toString()),
         removeOnPressed: () {
+          debugPrint('remove index $index');
           removeOption(index);
         },
       ));
@@ -38,24 +40,29 @@ class _SideMenuButtonsState extends State<SideMenuButtons> {
   }
 
   removeOption(int index) {
-    i--;
     setState(() {
-      initialHeigth -= 60;
       items.removeAt(index);
-      // items = List<int>.generate(i, (int index) => index);
     });
+  }
+
+  Key generateKey() {
+    final random = Random();
+    final first = random.nextDouble();
+    final second = random.nextInt(20);
+    final third = random.nextDouble();
+
+    return Key('$first$second$third');
   }
 
   @override
   void initState() {
-    items = List<Widget>.generate(
-        1,
-        (int index) => TileButtonWidget(
-              key: Key('$index'),
-              removeOnPressed: () {
-                removeOption(index);
-              },
-            ));
+    items.add(TileButtonWidget(
+      key: const Key('0'),
+      removeOnPressed: () {
+        removeOption(0);
+      },
+    ));
+
     super.initState();
   }
 
@@ -174,75 +181,89 @@ class _SideMenuButtonsState extends State<SideMenuButtons> {
                   ),
                   Container(
                     padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 58, 61, 93),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    height: initialHeigth,
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: ReorderableListView(
-                            children: items,
-                            onReorder: (int oldIndex, int newIndex) {
-                              setState(() {
-                                if (oldIndex < newIndex) {
-                                  newIndex -= 1;
-                                }
-                                final Widget item = items.removeAt(oldIndex);
-                                items.insert(newIndex, item);
-                              });
-                            },
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            addOption();
-                          },
-                          child: SizedBox(
-                              // margin: const EdgeInsets.only(top: 5),
-                              height: 40,
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    height: 40,
-                                    width: screen.width * 0.258,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          const Color.fromARGB(255, 51, 53, 81),
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    child: const Center(
-                                      child: Text(
-                                        'Add another button',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
+                    color: Color.fromARGB(255, 60, 66, 94),
+                    child: Column(children: [
+                      ReorderableListView(
+                        shrinkWrap: true,
+                        buildDefaultDragHandles: true,
+                        children: 
+                        items,
+                        // List.generate(
+                        //   items.length,
+                        //   (index) => ReorderableDragStartListener(
+                        //     child: items[index],
+                        //     index: index,
+                        //     key: Key('$index'),
+                        //   ),
+                        // ),
+                        onReorder: (int oldIndex, int newIndex) {
+                          print(oldIndex);
+                          print(newIndex);
+                          setState(() {
+                            if (oldIndex < newIndex) {
+                              newIndex -= 1;
+                            }
+
+                            final item = items.removeAt(oldIndex);
+
+                            items.insert(newIndex, item);
+                          });
+                        },
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          addOption();
+                        },
+                        child: SizedBox(
+                            // margin: const EdgeInsets.only(top: 5),
+                            height: 40,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  height: 40,
+                                  width: screen.width * 0.258,
+                                  decoration: BoxDecoration(
+                                    color:
+                                        const Color.fromARGB(255, 51, 53, 81),
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      'Add another button',
+                                      style: TextStyle(color: Colors.white),
                                     ),
                                   ),
-                                  Positioned(
-                                    left: 0,
-                                    bottom: 0,
-                                    child: Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: const Center(
-                                        child: Icon(Icons.add),
-                                      ),
+                                ),
+                                Positioned(
+                                  left: 0,
+                                  bottom: 0,
+                                  child: Container(
+                                    height: 40,
+                                    width: 40,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      shape: BoxShape.circle,
                                     ),
-                                  )
-                                ],
-                              )),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                                    child: const Center(
+                                      child: Icon(Icons.add),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ]),
+                  )
+
+                  // const SizedBox(
+                  //   height: 20,
+                  // ),
                 ],
               ),
             ),
