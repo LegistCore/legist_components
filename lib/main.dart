@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:legist_components/app_router.dart';
 import 'package:legist_components/show_case/second_sprint.dart';
-import 'package:legist_components/show_case/showcase_options.dart';
-import 'package:legist_components/widgets/tile_button_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,7 +8,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,10 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: const ShowCaseOptions(),
-      home:  Scaffold(
-        body: SecondSprint(),
-      ),
+      initialRoute: SecondSprint.routeName,
+      onGenerateRoute: AppRouter.onGenerateRoute, 
     );
   }
 }
