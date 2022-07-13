@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class SideMenuText extends StatefulWidget {
   const SideMenuText({Key? key}) : super(key: key);
-
+  static const routeName = '/side_menu_text';
   @override
   State<SideMenuText> createState() => _SideMenuTextState();
 }
@@ -34,7 +34,7 @@ class _SideMenuTextState extends State<SideMenuText> {
                     children: [
                       Icon(
                         Icons.textsms_rounded,
-                        color: Colors.blue[300],
+                        color: Colors.blue,
                       ),
                       const SizedBox(
                         width: 12,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:legist_components/components/question_date_component.dart';
 import 'package:legist_components/components/question_email_component.dart';
 import 'package:legist_components/components/question_text_component.dart';
 import 'package:legist_components/components/side_menu_buttons.dart';
+import 'package:legist_components/components/side_menu_date.dart';
 import 'package:legist_components/components/side_menu_email.dart';
 import 'package:legist_components/components/side_menu_phone.dart';
 import 'package:legist_components/components/side_menu_text.dart';
@@ -12,7 +14,7 @@ import '../components/question_phone_component.dart';
 
 class SecondSprint extends StatefulWidget {
   const SecondSprint({Key? key}) : super(key: key);
-
+  static const String routeName = '/second_sprint';
   @override
   State<SecondSprint> createState() => _SecondSprintState();
 }
@@ -83,6 +85,17 @@ class _SecondSprintState extends State<SecondSprint> {
                         },
                         child: const QuestionPhoneComponent(),
                       ),
+                      const SizedBox(
+                    width: 20,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        choice = const SideMenuDate();
+                      });
+                    },
+                    child: const QuestionDateComponent(),
+                  ),
                     ],
                   ),
                   const SizedBox(

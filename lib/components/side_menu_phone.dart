@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class SideMenuPhone extends StatefulWidget {
   const SideMenuPhone({Key? key}) : super(key: key);
-
+  static const routeName = '/side_menu_phone';
   @override
   State<SideMenuPhone> createState() => _SideMenuPhoneState();
 }
@@ -34,7 +34,7 @@ class _SideMenuPhoneState extends State<SideMenuPhone> {
                     children: [
                       Icon(
                         Icons.phone_android_rounded,
-                        color: Colors.blue[300],
+                        color: Colors.blue,
                       ),
                       const SizedBox(
                         width: 12,

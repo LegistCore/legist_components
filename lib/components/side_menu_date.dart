@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SideMenuEmail extends StatefulWidget {
-  const SideMenuEmail({Key? key}) : super(key: key);
-  static const routeName = '/side_menu_email';
+class SideMenuDate extends StatefulWidget {
+  const SideMenuDate({Key? key}) : super(key: key);
+  static const routeName = '/side_menu_date';
   @override
-  State<SideMenuEmail> createState() => _SideMenuEmailState();
+  State<SideMenuDate> createState() => _SideMenuDateState();
 }
 
-class _SideMenuEmailState extends State<SideMenuEmail> {
+class _SideMenuDateState extends State<SideMenuDate> {
   Color? color;
   @override
   Widget build(BuildContext context) {
@@ -33,8 +33,8 @@ class _SideMenuEmailState extends State<SideMenuEmail> {
                   child: Row(
                     children: [
                       Icon(
-                        Icons.email_outlined,
-                        color: Colors.blue,
+                        Icons.calendar_month,
+                        color: Colors.red,
                       ),
                       const SizedBox(
                         width: 12,
@@ -43,7 +43,7 @@ class _SideMenuEmailState extends State<SideMenuEmail> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'QUESTION: EMAIL',
+                            'QUESTION: DATE',
                             style: TextStyle(
                               fontSize: 15,
                               color: Color.fromARGB(255, 60, 66, 94),

@@ -9,10 +9,10 @@ class SideMenuButtons extends StatefulWidget {
   final VoidCallback? onPressedAdd;
 
   const SideMenuButtons({
-    required this.onPressedAdd,
+    this.onPressedAdd,
     Key? key,
   }) : super(key: key);
-
+  static const String routeName = '/side_menu_buttons';
   @override
   State<SideMenuButtons> createState() => _SideMenuButtonsState();
 }
