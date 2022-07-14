@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:legist_components/app_router.dart';
+import 'package:legist_components/di_container.dart';
 import 'package:legist_components/show_case/second_sprint.dart';
 
 void main() {
+  DiContainer.registerDependencies();
   runApp(const MyApp());
 }
 
